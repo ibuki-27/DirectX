@@ -125,7 +125,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DescriptorHeap.cpp" />
     <ClCompile Include="Entry.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DescriptorHeap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
