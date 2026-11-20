@@ -125,11 +125,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Command_allocator.cpp" />
+    <ClCompile Include="Command_list.cpp" />
+    <ClCompile Include="Command_queue.cpp" />
     <ClCompile Include="DescriptorHeap.cpp" />
+    <ClCompile Include="Device.cpp" />
+    <ClCompile Include="DXGI.cpp" />
     <ClCompile Include="Entry.cpp" />
+    <ClCompile Include="Fence.cpp" />
+    <ClCompile Include="Render_target.cpp" />
+    <ClCompile Include="Swap_chain.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Command_allocator.h" />
+    <ClInclude Include="Command_list.h" />
+    <ClInclude Include="Command_queue.h" />
     <ClInclude Include="DescriptorHeap.h" />
+    <ClInclude Include="Device.h" />
+    <ClInclude Include="DXGI.h" />
+    <ClInclude Include="Fence.h" />
+    <ClInclude Include="Render_target.h" />
+    <ClInclude Include="Swap_chain.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
