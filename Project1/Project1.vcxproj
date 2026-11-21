@@ -133,8 +133,12 @@
     <ClCompile Include="DXGI.cpp" />
     <ClCompile Include="Entry.cpp" />
     <ClCompile Include="Fence.cpp" />
+    <ClCompile Include="Pipline_state_object.cpp" />
     <ClCompile Include="Render_target.cpp" />
+    <ClCompile Include="Root_signature.cpp" />
+    <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Swap_chain.cpp" />
+    <ClCompile Include="Triangle_polygon.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -145,8 +149,12 @@
     <ClInclude Include="Device.h" />
     <ClInclude Include="DXGI.h" />
     <ClInclude Include="Fence.h" />
+    <ClInclude Include="Pipline_state_object.h" />
     <ClInclude Include="Render_target.h" />
+    <ClInclude Include="Root_signature.h" />
+    <ClInclude Include="Shader.h" />
     <ClInclude Include="Swap_chain.h" />
+    <ClInclude Include="Triangle_polygon.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
