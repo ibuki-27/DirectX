@@ -5,7 +5,7 @@
 #include <string>
 
 #include <d3dcompiler.h>
-#pragma comment(lib, "d3dcompoler.lib")
+#pragma comment(lib, "d3dcompiler.lib")
 
 // デストラクタ
 
@@ -34,27 +34,53 @@ Shader::~Shader()
     // シェーダを読込、コンパイルして生成する
 
     // シェーダファイルのパス
-    const std::string  filePath = "asset/shader.hlsl";
-    const std::wstring temp = std::wstring(filePath.begin(), filePath.end());
-    // シェーダのコンパイルエラーなどが分かる様にする
+    const std::wstring vertexShaderPath = L"VertexShader.hlsl";
+    const std::wstring pixelShaderPath = L"PixelShader.hlsl";    
     ID3DBlob* error{};
 
-    auto res = D3DCompileFromFile(temp.data(), nullptr, nullptr, "vs", "vs_5_0", D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION, 0, &vertexShader_, &error);
-    if (FAILED(res)) 
+    auto res = D3DCompileFromFile(vertexShaderPath.c_str(), nullptr, nullptr, "vs", "vs_5_0", D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION, 0, &vertexShader_, &error);
+
+    if (FAILED(res))
     {
-        char* p = static_cast<char*>(error->GetBufferPointer());
-        assert(false && "頂点シェーダのコンパイルに失敗しました");
-    }
-    res = D3DCompileFromFile(temp.data(), nullptr, nullptr, "ps", "ps_5_0", D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION, 0, &pixelShader_, &error);
-    if (FAILED(res)) 
-    {
-        char* p = static_cast<char*>(error->GetBufferPointer());
-        assert(false && "ピクセルシェーダのコンパイルに失敗しました");
+        if (error)
+        {
+            OutputDebugStringA(static_cast<const char*>(error->GetBufferPointer()));
+
+            error->Release();
+            error = nullptr;
+        }
+
+        OutputDebugStringA("頂点シェーダのコンパイルに失敗しました\n");
+        return false;
     }
 
-    if (error) 
+    if (error)
     {
         error->Release();
+        error = nullptr;
+    }
+
+    // ピクセルシェーダのコンパイル
+    res = D3DCompileFromFile(pixelShaderPath.c_str(), nullptr, nullptr, "ps", "ps_5_0", D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION, 0, &pixelShader_, &error);
+
+    if (FAILED(res))
+    {
+        if (error)
+        {
+            OutputDebugStringA(static_cast<const char*>(error->GetBufferPointer()));
+
+            error->Release();
+            error = nullptr;
+        }
+
+        OutputDebugStringA("ピクセルシェーダのコンパイルに失敗しました\n");
+        return false;
+    }
+
+    if (error)
+    {
+        error->Release();
+        error = nullptr;
     }
 
     return true;
