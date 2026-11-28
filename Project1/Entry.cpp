@@ -170,7 +170,7 @@ public:
             commandListInstance_.get()->OMSetRenderTargets(1, handles, false, nullptr);
 
             // レンダーターゲットのクリア
-            const float clearColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };  // 赤色でクリア
+            const float clearColor[] = { 0.0f, 0.0f, 0.0f, 1.0f };  // 黒色でクリア
             commandListInstance_.get()->ClearRenderTargetView(handles[0], clearColor, 0, nullptr);
 
             // パイプラインステートの設定
